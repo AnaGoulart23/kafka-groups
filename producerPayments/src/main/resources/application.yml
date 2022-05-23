@@ -1,0 +1,26 @@
+server:
+  port: 8082
+spring:
+  kafka:
+    producer:
+      bootstrap-servers: localhost:29092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      bootstrap-servers: localhost:29092
+      group-id: group-two
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/fluxo
+    username: postgres
+    password: postgres
+    driverClassName: org.postgresql.Driver
+    jpa:
+      show-sql: true
+      hibernate:
+        ddl-auto: none
+
+payment:
+  topic: payments
